@@ -8,15 +8,53 @@ namespace com.quansheng.DesignPatterns
         static void Main(string[] args)
         {
             RunStrategyPattern();
+            RunObserverPattern(); 
+            RunCommandPattern();      
         }
 
+        #region Design Patterns
         public static void RunStrategyPattern()
         {
-            var averageMethod = new AverageByMean();
+            PrintOutputTitle("Strategy");
+            var averageMethod = new Strategy.AverageByMean();
             var values = new List<int>(){1, 2, 3};
-            var result = Calculator.AverageFor(values, averageMethod);
+            var result = Strategy.Calculator.AverageFor(values, averageMethod);
 
-            Console.WriteLine("Strategy Pattern Output: {0}", result);
+            Console.WriteLine("Output: {0}", result);
         }
+
+        public static void RunObserverPattern()
+        {
+            PrintOutputTitle("Observer");
+            var subject = new Observer.ConcreteSubject();
+            var ob1 = new Observer.Observer(5);
+            var ob2 = new Observer.Observer(10);
+            var ob3 = new Observer.Observer(20);
+            subject.Add(ob1);
+            subject.Add(ob2);
+            subject.Add(ob3);
+
+            subject.State = 0;
+        }
+
+        private static void RunCommandPattern()
+        {
+            PrintOutputTitle("Command");
+            var receiver = new Command.FirstReceiver();
+            var command = new Command.FirstCommand(receiver);
+            var invoker = new Command.Invoker(command);
+
+            invoker.ExecuteCommand();
+        }
+        #endregion
+
+
+        #region helper methods
+        private static void PrintOutputTitle(string patternName)
+        {
+            Console.WriteLine();
+            Console.WriteLine("##### {0} Pattern #####", patternName);
+        }
+        #endregion
     }
 }

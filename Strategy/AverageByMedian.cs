@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace com.quansheng.DesignPatterns
+namespace com.quansheng.DesignPatterns.Strategy
 {
     public class AverageByMedian : IAverage
     {

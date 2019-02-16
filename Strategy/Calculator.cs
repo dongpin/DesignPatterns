@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace com.quansheng.DesignPatterns
+namespace com.quansheng.DesignPatterns.Strategy
 {
     public class Calculator
     {
