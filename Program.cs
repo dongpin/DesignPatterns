@@ -7,12 +7,27 @@ namespace com.quansheng.DesignPatterns
     {
         static void Main(string[] args)
         {
+            RunSingletonPattern();
+
             RunStrategyPattern();
             RunObserverPattern(); 
             RunCommandPattern();      
         }
 
-        #region Design Patterns
+        #region Creational Design Patterns
+        private static void RunSingletonPattern()
+        {
+            PrintOutputTitle("Singleton");
+            var instance = Singleton.Product.Instance();
+            instance = Singleton.Product.Instance();
+        }
+        #endregion
+
+        #region Structural Design Patterns
+
+        #endregion
+
+        #region Behavioral Design Patterns
         public static void RunStrategyPattern()
         {
             PrintOutputTitle("Strategy");
@@ -47,7 +62,6 @@ namespace com.quansheng.DesignPatterns
             invoker.ExecuteCommand();
         }
         #endregion
-
 
         #region helper methods
         private static void PrintOutputTitle(string patternName)
