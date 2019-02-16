@@ -9,6 +9,8 @@ namespace com.quansheng.DesignPatterns
         {
             RunSingletonPattern();
 
+            RunAdapterPattern();
+
             RunStrategyPattern();
             RunObserverPattern(); 
             RunCommandPattern();      
@@ -24,7 +26,12 @@ namespace com.quansheng.DesignPatterns
         #endregion
 
         #region Structural Design Patterns
-
+        private static void RunAdapterPattern()
+        {
+            PrintOutputTitle("Adapter");
+            var instance = new Adapter.Adapter();
+            instance.Request();
+        }
         #endregion
 
         #region Behavioral Design Patterns
