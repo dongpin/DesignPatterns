@@ -4,6 +4,7 @@ namespace com.quansheng.DesignPatterns.Singleton
 {
     public class Product
     {
+        private static Object _lock = new Object();
         private static Product _instance;
         protected Product()
         {
@@ -13,7 +14,19 @@ namespace com.quansheng.DesignPatterns.Singleton
 
         public static Product Instance()
         {
-            _instance = _instance ?? new Product();
+            if (_instance != null)
+            {
+                return _instance;
+            }
+
+            lock (_lock)
+            {
+                if (_instance == null)
+                {
+                    _instance = new Product();
+                }
+            }
+
             return _instance;
         }
     }
