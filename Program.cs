@@ -14,6 +14,7 @@ namespace com.quansheng.DesignPatterns
             RunStrategyPattern();
             RunObserverPattern(); 
             RunCommandPattern();      
+            RunIteratorPattern();
         }
 
         #region Creational Design Patterns
@@ -67,6 +68,23 @@ namespace com.quansheng.DesignPatterns
             var invoker = new Command.Invoker(command);
 
             invoker.ExecuteCommand();
+        }
+
+        private static void RunIteratorPattern()
+        {
+            PrintOutputTitle("Iterator");
+            var aggregate = new Iterator.ConcreteAggregate();
+            aggregate[0] = "A";
+            aggregate[1] = "B";
+            aggregate[2] = "C";
+
+            Iterator.Iterator iterator = aggregate.CreateIterator();
+
+            Console.WriteLine($"Item {iterator.First()}");
+            while (!iterator.IsDone())
+            {
+                Console.WriteLine($"Item {iterator.Next()}");
+            }          
         }
         #endregion
 
